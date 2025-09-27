@@ -1,0 +1,47 @@
+[
+    {
+      "load_id": "LID-001",
+      "origin": "New York, NY",
+      "destination": "Chicago, IL",
+      "pickup_datetime": "2025-09-29T09:00:00Z",
+      "delivery_datetime": "2025-09-30T17:00:00Z",
+      "equipment_type": "Van",
+      "loadboard_rate": 1800.00,
+      "notes": "Team drivers preferred for fast delivery.",
+      "weight": 42000,
+      "commodity_type": "General Freight",
+      "num_of_pieces": 1,
+      "miles": 790,
+      "dimensions": "53ft"
+    },
+    {
+      "load_id": "LID-002",
+      "origin": "Dallas, TX",
+      "destination": "Los Angeles, CA",
+      "pickup_datetime": "2025-09-29T14:00:00Z",
+      "delivery_datetime": "2025-10-01T22:00:00Z",
+      "equipment_type": "Reefer",
+      "loadboard_rate": 2500.00,
+      "notes": "Must maintain temperature at 34°F. Produce.",
+      "weight": 44000,
+      "commodity_type": "Produce",
+      "num_of_pieces": 1200,
+      "miles": 1435,
+      "dimensions": "53ft"
+    },
+    {
+      "load_id": "LID-003",
+      "origin": "New York, NY",
+      "destination": "Miami, FL",
+      "pickup_datetime": "2025-09-30T11:00:00Z",
+      "delivery_datetime": "2025-10-02T15:00:00Z",
+      "equipment_type": "Van",
+      "loadboard_rate": 2100.00,
+      "notes": "No touch freight. Drop and hook at destination.",
+      "weight": 38000,
+      "commodity_type": "Electronics",
+      "num_of_pieces": 800,
+      "miles": 1285,
+      "dimensions": "53ft"
+    }
+  ]
