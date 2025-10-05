@@ -1,0 +1,52 @@
+[
+  {
+    "mc_number": "123456",
+    "load_id": "LID-001",
+    "outcome": "Booked",
+    "sentiment": "Positive",
+    "negotiation_rounds": 1,
+    "final_rate": 1800.0,
+    "call_duration_seconds": 125,
+    "call_timestamp": "2025-09-26T10:05:00Z"
+  },
+  {
+    "mc_number": "654321",
+    "load_id": null,
+    "outcome": "Carrier Ineligible",
+    "sentiment": "Neutral",
+    "negotiation_rounds": 0,
+    "final_rate": null,
+    "call_duration_seconds": 35,
+    "call_timestamp": "2025-09-26T10:15:00Z"
+  },
+  {
+    "mc_number": "999999",
+    "load_id": "LID-002",
+    "outcome": "Negotiation Failed",
+    "sentiment": "Negative",
+    "negotiation_rounds": 3,
+    "final_rate": null,
+    "call_duration_seconds": 180,
+    "call_timestamp": "2025-09-27T11:30:00Z"
+  },
+  {
+    "mc_number": "123456",
+    "load_id": "LID-003",
+    "outcome": "Booked",
+    "sentiment": "Positive",
+    "negotiation_rounds": 2,
+    "final_rate": 2050.0,
+    "call_duration_seconds": 150,
+    "call_timestamp": "2025-09-27T14:00:00Z"
+  },
+  {
+    "mc_number": "777888",
+    "load_id": null,
+    "outcome": "No Loads Available",
+    "sentiment": "Neutral",
+    "negotiation_rounds": 0,
+    "final_rate": null,
+    "call_duration_seconds": 65,
+    "call_timestamp": "2025-09-28T09:00:00Z"
+  }
+]

@@ -12,7 +12,7 @@ from pydantic_settings import BaseSettings
 # Load environment variables from a .env file for security
 class Settings(BaseSettings):
     api_key: str
-    fmcsa_api_key: str
+    fmcsa_api_key: str   
 
     class Config:
         env_file = ".env"
@@ -24,7 +24,54 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Define a security scheme for API key authentication
+sampleLoads= [
+    {
+      "load_id": "LID-001",
+      "origin": "New York, NY",
+      "destination": "Chicago, IL",
+      "pickup_datetime": "2025-09-29T09:00:00Z",
+      "delivery_datetime": "2025-09-30T17:00:00Z",
+      "equipment_type": "Van",
+      "loadboard_rate": 1800.00,
+      "notes": "Team drivers preferred for fast delivery.",
+      "weight": 42000,
+      "commodity_type": "General Freight",
+      "num_of_pieces": 1,
+      "miles": 790,
+      "dimensions": "53ft"
+    },
+    {
+      "load_id": "LID-002",
+      "origin": "Dallas, TX",
+      "destination": "Los Angeles, CA",
+      "pickup_datetime": "2025-09-29T14:00:00Z",
+      "delivery_datetime": "2025-10-01T22:00:00Z",
+      "equipment_type": "Reefer",
+      "loadboard_rate": 2500.00,
+      "notes": "Must maintain temperature at 34°F. Produce.",
+      "weight": 44000,
+      "commodity_type": "Produce",
+      "num_of_pieces": 1200,
+      "miles": 1435,
+      "dimensions": "53ft"
+    },
+    {
+      "load_id": "LID-003",
+      "origin": "New York, NY",
+      "destination": "Miami, FL",
+      "pickup_datetime": "2025-09-30T11:00:00Z",
+      "delivery_datetime": "2025-10-02T15:00:00Z",
+      "equipment_type": "Van",
+      "loadboard_rate": 2100.00,
+      "notes": "No touch freight. Drop and hook at destination.",
+      "weight": 38000,
+      "commodity_type": "Electronics",
+      "num_of_pieces": 800,
+      "miles": 1285,
+      "dimensions": "53ft"
+    }
+  ]
+
 security_scheme = HTTPBearer()
 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security_scheme)):
@@ -76,7 +123,7 @@ def load_db() -> List[Load]:
 
 def save_call_log(log: CallLog):
     """Saves the completed call log to a file for dashboard."""
-    log_file = "./testData/call_logs.json"
+    log_file = "./dashboard/testData/call_logs.json"
     logs = []
     if os.path.exists(log_file):
         with open(log_file, "r") as f:
@@ -109,7 +156,7 @@ def search_loads(
     """
     Search for loads based on given information
     """
-    all_loads = load_db()
+    all_loads = [Load(**item) for item in sampleLoads]
     filtered_loads = all_loads
 
     if origin:
@@ -134,7 +181,7 @@ def verify_carrier(request: CarrierVerificationRequest):
     Verifies if a carrier is eligible to work with using the FMCSA API
     """
     mc_number = request.mc_number
-    fmcsa_url = f"https://mobile.fmcsa.dot.gov/qc/services/carriers/{mc_number}?webKey={settings.fmcsa_api_key}"
+    fmcsa_url = f"https://mobile.fmcsa.dot.gov/qc/services/carriers/{mc_number}?webkey={settings.fmcsa_api_key}"
     try:
         response = requests.get(fmcsa_url)
         response.raise_for_status()
