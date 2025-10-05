@@ -2,4 +2,5 @@
 Freight Automation 
 
 to run dashboard locally 
-- pip install 
+- pip install -r "requirements.txt"
+- streamlit run app.py
